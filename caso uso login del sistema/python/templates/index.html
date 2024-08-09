@@ -17,6 +17,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title text-center">Iniciar sesión</h3>
+
+                        {% if error %}
+                            <script type="text/javascript">
+                                alert("{{ error }}");
+                            </script>
+                        {% endif %}
+
                         <form id="loginForm" method="POST" action="{{ url_for('login') }}">
                             <div class="form-group">
                                 <label for="cuenta">Cuenta:</label>
