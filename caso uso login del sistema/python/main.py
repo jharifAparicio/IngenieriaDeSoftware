@@ -29,7 +29,7 @@ class UserController:
             self.userList.append(user)
 
     def newUsers(self):
-            self.userList.append(Usuario(1, 'johnDoe', 'password123'))
+            self.userList.append(Usuario(1, 'jharif', '12345678'))
             self.userList.append(Usuario(2, 'janeDoe', 'ilovejavascript'))
             self.userList.append(Usuario(3, 'admin', 'admin123'))
             self.userList.append(Usuario(4, 'user123', 'pass123'))
