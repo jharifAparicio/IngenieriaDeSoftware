@@ -1,7 +1,7 @@
-from Flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
-app.secret_key = '1234567890'  # Necesario para manejar las sesiones y los mensajes flash
+app.secret_key = 'supersecretkey' # Necesario para manejar las sesiones y los mensajes flash
 
 # Clase para representar al usuario
 class User:
