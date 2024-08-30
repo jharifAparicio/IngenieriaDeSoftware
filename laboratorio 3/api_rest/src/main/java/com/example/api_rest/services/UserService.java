@@ -1,4 +1,4 @@
-package com.example.api_rest.sevices;
+package com.example.api_rest.services;
 
 import java.util.ArrayList;
 
