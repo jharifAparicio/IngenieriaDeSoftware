@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask
 from user import db
 from user_controller import create_api
 
@@ -7,8 +7,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
-app.request = request
-app.jsonify = jsonify
 
 with app.app_context():
     db.create_all()
