@@ -2,7 +2,6 @@
 venv/
 env/
 .venv/
-
 # Archivos compilados de Python
 *.pyc
 *.pyo
@@ -50,3 +49,6 @@ __pycache__/
 # Configuración de Flask
 config.py
 config.yaml
+
+#archivos rar
+*.rar
