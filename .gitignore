@@ -66,3 +66,5 @@ jacoco.exec
 # Archivos de empaquetado de Docker o CI/CD
 *.env
 docker-compose.override.yml
+
+uploads
