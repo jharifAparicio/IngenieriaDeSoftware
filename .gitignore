@@ -1,1 +1,68 @@
+#vscode
 .vscode
+
+#node
+node_modules
+
+**/package-lock.json
+
+#python
+__pycache__
+
+venv
+
+
+#java
+# Directorios de compilación
+/bin
+/build
+/target
+/out
+
+# Dependencias descargadas de Maven/Gradle
+/.mvn
+/.gradle
+!**/src/main/**/generated/**
+
+# Archivos de configuración específicos del IDE
+/.idea/
+/*.iml
+/.classpath
+/.project
+/.settings/
+/.vscode/
+*.launch
+
+# Logs
+*.log
+/logs
+/hs_err_pid*
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos generados por el JRE
+*.class
+*.jar
+*.war
+*.ear
+
+# Archivos específicos de Maven
+mvnw
+mvnw.cmd
+/.mvn/wrapper/maven-wrapper.jar
+
+# Archivos de configuración de Spring Boot
+.env
+*.env
+spring.log
+
+# Archivos de test coverage
+jacoco.exec
+/test-output/
+.coverage
+
+# Archivos de empaquetado de Docker o CI/CD
+*.env
+docker-compose.override.yml
