@@ -1,5 +1,4 @@
-// controllers/UserController.js
-const UserRepository = require('../repositories/UserRepository');
+const UserService = require('../services/UserService');
 const multer = require('multer');
 const path = require('path');
 
@@ -14,10 +13,10 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-class UserController { 
+class UserController {
   // Mostrar todos los usuarios
   static index(req, res) {
-    UserRepository.getAll((err, users) => {
+    UserService.getAllUsers((err, users) => {
       if (err) throw err;
       res.render('users/index', { users });
     });
@@ -28,23 +27,24 @@ class UserController {
     res.render('users/create');
   }
 
-  // Guardar nuevo usuario
-  static store(req, res) {
+  // Guardar nuevo usuario sin encriptación de contraseña
+  static async store(req, res) {
     const user = {
       ...req.body,
-      imagen: req.file ? `/uploads/${req.file.filename}` : null,
-      updatedAt: new Date()
+      imagen: req.file ? `/uploads/${req.file.filename}` : null
     };
-    UserRepository.create(user, (err) => {
-      if (err) throw err;
+    try {
+      await UserService.createUser(user);
       res.redirect('/users');
-    });
+    } catch (err) {
+      res.status(500).send('Error creando usuario');
+    }
   }
 
   // Mostrar un solo usuario
   static show(req, res) {
     const id = req.params.id;
-    UserRepository.getById(id, (err, user) => {
+    UserService.getUserById(id, (err, user) => {
       if (err) throw err;
       res.render('users/show', { user });
     });
@@ -53,7 +53,7 @@ class UserController {
   // Mostrar formulario de edición
   static edit(req, res) {
     const id = req.params.id;
-    UserRepository.getById(id, (err, user) => {
+    UserService.getUserById(id, (err, user) => {
       if (err) throw err;
       res.render('users/edit', { user });
     });
@@ -64,10 +64,9 @@ class UserController {
     const id = req.params.id;
     const user = {
       ...req.body,
-      imagen: req.file ? `/uploads/${req.file.filename}` : req.body.oldImagen,
-      updatedAt: new Date()
+      imagen: req.file ? `/uploads/${req.file.filename}` : req.body.oldImagen
     };
-    UserRepository.update(id, user, (err) => {
+    UserService.updateUser(id, user, (err) => {
       if (err) throw err;
       res.redirect(`/users/${id}`);
     });
@@ -76,7 +75,7 @@ class UserController {
   // Eliminar usuario
   static delete(req, res) {
     const id = req.params.id;
-    UserRepository.delete(id, (err) => {
+    UserService.deleteUser(id, (err) => {
       if (err) throw err;
       res.redirect('/users');
     });
