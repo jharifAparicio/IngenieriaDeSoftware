@@ -68,3 +68,5 @@ jacoco.exec
 docker-compose.override.yml
 
 uploads
+
+**/target
